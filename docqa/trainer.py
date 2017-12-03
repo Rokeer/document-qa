@@ -37,18 +37,23 @@ class SerializableOptimizer(Configurable):
 
     def get(self, name=None):
         params = {} if self.params is None else self.params
-        if self.opt_name == "Adam":
-            if name is None:
-                return AdamOptimizer(**params)
-            else:
-                return AdamOptimizer(name=name, **params)
-        elif self.opt_name == "Adadelta":
-            if name is None:
-                return AdadeltaOptimizer(**params)
-            else:
-                return AdadeltaOptimizer(name=name, **params)
+        # if self.opt_name == "Adam":
+        #     if name is None:
+        #         return AdamOptimizer(**params)
+        #     else:
+        #         return AdamOptimizer(name=name, **params)
+        # elif self.opt_name == "Adadelta":
+        #     if name is None:
+        #         return AdadeltaOptimizer(**params)
+        #     else:
+        #         return AdadeltaOptimizer(name=name, **params)
+        # else:
+        #     raise NotImplemented()
+
+        if name is None:
+            return AdadeltaOptimizer(**params)
         else:
-            raise NotImplemented()
+            return AdadeltaOptimizer(name=name, **params)
 
 
 def init(out: ModelDir, model: Model, override=False):
