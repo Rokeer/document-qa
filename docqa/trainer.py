@@ -247,7 +247,7 @@ def continue_training(
     """ Train an already existing model, or start for scatch """
     if not exists(out.dir) or os.listdir(out.dir) == 0:
         print("Files do not exist, start from scratch")
-        start_training(data, model, train_params, evaluators, out, notes, dry_run)
+        start_training(data, model, train_params, evaluators, out, notes)
     else:
         print("Files already exist, loading most recent model")
         resume_training_with(data, out, train_params, evaluators, notes, dry_run)
