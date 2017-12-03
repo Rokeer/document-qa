@@ -36,7 +36,7 @@ def main():
     dim = args.dim
     recurrent_layer = CudnnGru(dim, w_init=TruncatedNormal(stddev=0.05))
 
-    params = trainer.TrainParams(trainer.SerializableOptimizer("Adadelta_1", dict(learning_rate=1.0)),
+    params = trainer.TrainParams(trainer.SerializableOptimizer("Adadelta", dict(learning_rate=1.0)),
                                  ema=0.999, max_checkpoints_to_keep=2, async_encoding=10,
                                  num_epochs=24, log_period=30, eval_period=1200, save_period=1200,
                                  best_weights=("dev", "b17/text-f1"),
