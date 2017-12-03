@@ -91,13 +91,13 @@ def main():
         notes = f.read()
         notes = str(sorted(args.__dict__.items(), key=lambda x:x[0])) + "\n" + notes
 
-    trainer.start_training(data, model, params,
-                           [LossEvaluator(), SpanEvaluator(bound=[17], text_eval="squad")],
-                           ModelDir(out), notes)
-
-    # trainer.continue_training(data, model, params,
+    # trainer.start_training(data, model, params,
     #                        [LossEvaluator(), SpanEvaluator(bound=[17], text_eval="squad")],
     #                        ModelDir(out), notes)
+
+    trainer.continue_training(data, model, params,
+                           [LossEvaluator(), SpanEvaluator(bound=[17], text_eval="squad")],
+                           ModelDir(out), notes)
 
 if __name__ == "__main__":
     main()
