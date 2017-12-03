@@ -30,8 +30,8 @@ def main():
     parser.add_argument("--top_layer_only", action="store_true")
     args = parser.parse_args()
 
-    out = args.output_dir
-    # out = args.output_dir + "-" + datetime.now().strftime("%m%d-%H%M%S")
+    # out = args.output_dir
+    out = args.output_dir + "-" + datetime.now().strftime("%m%d-%H%M%S")
 
     dim = args.dim
     recurrent_layer = CudnnGru(dim, w_init=TruncatedNormal(stddev=0.05))
@@ -91,13 +91,13 @@ def main():
         notes = f.read()
         notes = str(sorted(args.__dict__.items(), key=lambda x:x[0])) + "\n" + notes
 
-    # trainer.start_training(data, model, params,
-    #                        [LossEvaluator(), SpanEvaluator(bound=[17], text_eval="squad")],
-    #                        ModelDir(out), notes)
-
-    trainer.continue_training(data, model, params,
+    trainer.start_training(data, model, params,
                            [LossEvaluator(), SpanEvaluator(bound=[17], text_eval="squad")],
                            ModelDir(out), notes)
+
+    # trainer.continue_training(data, model, params,
+    #                        [LossEvaluator(), SpanEvaluator(bound=[17], text_eval="squad")],
+    #                        ModelDir(out), notes)
 
 if __name__ == "__main__":
     main()
