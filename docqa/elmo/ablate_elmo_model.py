@@ -30,8 +30,8 @@ def main():
     parser.add_argument("--top_layer_only", action="store_true")
     args = parser.parse_args()
 
-    # out = args.output_dir
-    out = args.output_dir + "-" + datetime.now().strftime("%m%d-%H%M%S")
+    out = args.output_dir
+    # out = args.output_dir + "-" + datetime.now().strftime("%m%d-%H%M%S")
 
     dim = args.dim
     recurrent_layer = CudnnGru(dim, w_init=TruncatedNormal(stddev=0.05))
