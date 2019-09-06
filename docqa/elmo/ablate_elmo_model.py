@@ -1,7 +1,7 @@
 import argparse
 from datetime import datetime
 
-from tensorflow.contrib.keras.python.keras.initializers import TruncatedNormal
+from tensorflow.contrib.keras.api.keras.initializers import TruncatedNormal
 
 from docqa import trainer
 from docqa.data_processing.qa_training_data import ContextLenKey
